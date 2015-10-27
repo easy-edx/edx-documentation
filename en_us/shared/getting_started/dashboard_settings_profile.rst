@@ -208,26 +208,35 @@ and other learners in your courses can view your profile.
 
 You can share a limited profile or a full profile.
 
-.. note:: Learners under 13 years of age can only share a limited profile.
+.. note:: If you are under 13 years of age, you can only share a limited
+   profile. However, you cannot add a profile picture and only your username
+   is shared with other edX users.
 
-A limited profile can include only your username and an image.
+A limited profile includes only your username and an image.
 
 .. image:: ../../../shared/images/SFD_Prof_Limited.png
  :width: 400
  :alt: A learner's limited profile showing only username and image.
 
-A full profile can include biographical information.
+A full profile includes biographical information in addition to your username
+and profile image.
 
 .. image:: ../../../shared/images/SFD_Prof_Full.png
  :width: 500
  :alt: A learner's full profile with location, language, and short
      biographical paragraph.
 
+
+.. _Create or Edit a Limited Profile:
+
 ================================
 Create or Edit a Limited Profile
 ================================
 
 A limited profile includes only your username and, optionally, an image.
+
+.. note:: If you are under 13 years of age, you cannot add a profile picture.
+   In your limited profile, only your username is shared with other edX users.
 
 To create or edit a limited profile, follow these steps.
 
@@ -259,8 +268,8 @@ Create or Edit a Full Profile
 ================================
 
 .. note:: You must specify your year of birth on the **Account Settings** page
-     before you share a full profile. If you are under age 13, you can only
-     share a limited profile.
+   before you share a full profile. If you are under 13 years of age, you
+   can share only a :ref:`limited profile <Create or Edit a Limited Profile>`.
 
 A full profile can include the following information. Your username and
 country or region are required.

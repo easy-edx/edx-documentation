@@ -32,7 +32,7 @@ How do I create or edit my user profile?
 
 Your edX profile allows you to share information about yourself with the edX
 community. Course teams and other learners in your courses can view your
-profile when they tap your linked username.
+profile when they select your linked username in forums.
 
 After you have created and activated your edX account, you can edit your user
 profile. By default, you share a limited profile that consists of your
@@ -41,16 +41,16 @@ username and an optional profile picture.
 .. note:: If you are under 13 years of age, your limited profile only includes
    your username. You cannot add a profile picture.
 
-To create or edit your profile details in the mobile app, tap your username or
-profile picture. Select the pencil icon to edit your profile details. Within
-profile details, select **Change** next to the camera icon to change your
-profile picture.
+To create or edit your profile details in the mobile app, select your username
+or profile picture. Select **Edit** to edit your profile details. In your profile
+details, select **Change** next to the camera icon to change your profile
+picture.
 
 If you want to share more information about yourself with other members of the
-edX commmunity, you can change your limited profile to a full profile. In the
-**About Me** section, you can indicate your primary language and share some
-details about yourself, such as your learning goals and other interests. To
-share a full profile, in your profile details, tap **Full Profile**.
+edX commmunity, you can change your limited profile to a full profile. You can
+indicate your primary language and share additional details about yourself in
+the **About Me** section, such as your learning goals and other interests. To
+share a full profile, select **Full Profile**.
 
 .. note:: You must specify your birth year before you can share a full
    profile. If you are under 13 years of age, you cannot create a full

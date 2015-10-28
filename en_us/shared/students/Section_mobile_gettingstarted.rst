@@ -44,13 +44,13 @@ profile details, select **Change** next to the camera icon to change your
 profile picture.
 
 .. note:: If you are under 13 years of age, you cannot add a profile picture.
-   In your limited profile, only your username is shared with other edX users.
+   Other edX users see only your username in your limited profile.
 
 If you want to share more information about yourself with other members of the
-edX commmunity, you can change your limited profile to a full profile. You can
-indicate your primary language and share some details in the **About Me**
-section, such as your learning goals and other interests. To share a full
-profile, in your profile details, tap **Full Profile**.
+edX commmunity, you can change your limited profile to a full profile. In the
+**About Me** section, you can indicate your primary language and share some
+details about yourself, such as your learning goals and other interests. To
+share a full profile, in your profile details, tap **Full Profile**.
 
 .. note:: You must specify your birth year before you can share a full
    profile. If you are under 13 years of age, you cannot create a full

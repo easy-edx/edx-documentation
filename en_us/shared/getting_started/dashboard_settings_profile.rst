@@ -158,11 +158,14 @@ information.
 
 * **Education Completed**: The highest level of education that you have
   completed.
-
 * **Gender**: The gender you identify as.
+<<<<<<< HEAD
 
 * **Year of Birth**: The year that you were born.
 
+=======
+* **Year of Birth**: The year that you were born.
+>>>>>>> Incorporate SRP review comments
 * **Preferred Language**: The language that you prefer to communicate in.
 
 To view or change this information, follow these steps.
@@ -208,11 +211,14 @@ and other learners in your courses can view your profile.
 
 You can share a limited profile or a full profile.
 
-.. note:: If you are under 13 years of age, you can only share a limited
-   profile. However, you cannot add a profile picture and only your username
-   is shared with other edX users.
+.. note:: If you are under 13 years of age, your limited profile only includes
+   your username. You cannot add a profile picture.
 
+<<<<<<< HEAD
 A limited profile includes only your username and an image.
+=======
+A limited profile includes only your username and, optionally, an image.
+>>>>>>> Incorporate SRP review comments
 
 .. image:: ../../../shared/images/SFD_Prof_Limited.png
  :width: 400
@@ -236,7 +242,7 @@ Create or Edit a Limited Profile
 A limited profile includes only your username and, optionally, an image.
 
 .. note:: If you are under 13 years of age, you cannot add a profile picture.
-   In your limited profile, only your username is shared with other edX users.
+   Other edX users see only your username in your limited profile.
 
 To create or edit a limited profile, follow these steps.
 
@@ -251,10 +257,15 @@ To create or edit a limited profile, follow these steps.
    100 bytes and 1 MB in size. If you do not add an image, the placeholder
    image appears as your profile image.
 
+<<<<<<< HEAD
    #. Move your cursor over the placeholder image, and then select **Upload
       Image**.
 
    #. In the dialog box, select the image file that you want, and then select
+=======
+   #. Move your cursor over the placeholder image, and then select **Upload Image**.
+   #. In the dialog box, select the image file that you want, and then click
+>>>>>>> Incorporate SRP review comments
       **Open**.
 
    To change or remove your profile image, move your cursor over your image,
@@ -341,4 +352,5 @@ username on the **Active Threads** page, and the learner's profile page.
   :width: 600
   :alt: Image of a discussion with a learner's username circled, an image of
       that learner's active threads page in the course discussions, and an
-      image of the learner's profile.
+      image of the learner's profile
+

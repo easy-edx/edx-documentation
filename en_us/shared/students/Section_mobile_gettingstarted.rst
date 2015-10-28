@@ -46,11 +46,11 @@ or profile picture. Select **Edit** to edit your profile details. In your profil
 details, select **Change** next to the camera icon to change your profile
 picture.
 
-If you want to share more information about yourself with other members of the
-edX commmunity, you can change your limited profile to a full profile. You can
-indicate your primary language and share additional details about yourself in
-the **About Me** section, such as your learning goals and other interests. To
-share a full profile, select **Full Profile**.
+To share more information about yourself with other members of the edX
+commmunity, you can change your limited profile to a full profile. You can
+indicate your primary language and, in the **About Me** section, you can share
+additional details such as your learning goals and other interests. To share a
+full profile, select **Full Profile**.
 
 .. note:: You must specify your birth year before you can share a full
    profile. If you are under 13 years of age, you cannot create a full

@@ -38,13 +38,13 @@ After you have created and activated your edX account, you can edit your user
 profile. By default, you share a limited profile that consists of your
 username and an optional profile picture.
 
+.. note:: If you are under 13 years of age, your limited profile only includes
+   your username. You cannot add a profile picture.
+
 To create or edit your profile details in the mobile app, tap your username or
 profile picture. Select the pencil icon to edit your profile details. Within
 profile details, select **Change** next to the camera icon to change your
 profile picture.
-
-.. note:: If you are under 13 years of age, you cannot add a profile picture.
-   Other edX users see only your username in your limited profile.
 
 If you want to share more information about yourself with other members of the
 edX commmunity, you can change your limited profile to a full profile. In the

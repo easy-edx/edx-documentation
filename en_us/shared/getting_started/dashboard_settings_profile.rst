@@ -241,8 +241,8 @@ Create or Edit a Limited Profile
 
 A limited profile includes only your username and, optionally, an image.
 
-.. note:: If you are under 13 years of age, you cannot add a profile picture.
-   Other edX users see only your username in your limited profile.
+.. note:: If you are under 13 years of age, your limited profile only includes
+   your username. You cannot add a profile picture.
 
 To create or edit a limited profile, follow these steps.
 

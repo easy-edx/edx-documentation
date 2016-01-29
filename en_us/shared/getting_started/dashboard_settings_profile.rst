@@ -208,14 +208,10 @@ and other learners in your courses can view your profile.
 
 You can share a limited profile or a full profile.
 
+A limited profile includes only your username and optionally, a profile image.
+
 .. note:: If you are under 13 years of age, your limited profile only includes
    your username. You cannot add a profile picture.
-
-<<<<<<< HEAD
-A limited profile includes only your username and an image.
-=======
-A limited profile includes only your username and, optionally, an image.
->>>>>>> Incorporate SRP review comments
 
 .. image:: ../../../shared/images/SFD_Prof_Limited.png
  :width: 400

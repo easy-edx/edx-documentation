@@ -202,16 +202,16 @@ Exploring the Profile Page
 *************************************
 
 Your edX profile allows you to share information about yourself with the edX
-community. Your profile can include an image that identifies you on the edX
-site as well as your location and other biographical information. Course teams
-and other learners in your courses can view your profile.
+community. Course teams and other learners in your courses can view your
+profile. Your profile always includes your username. Optionally, and if you
+are over 13 years of age, you can also share a profile picture, your location,
+and other biographical information.
 
-You can share a limited profile or a full profile.
+You can share either a limited profile or a full profile. A limited profile
+shares only your username and an optional profile picture.
 
-A limited profile includes only your username and optionally, a profile image.
-
-.. note:: If you are under 13 years of age, your limited profile only includes
-   your username. You cannot add a profile picture.
+.. note:: If you are under 13 years of age, you can only share a limited
+   profile and you cannot share a profile picture.
 
 .. image:: ../../../shared/images/SFD_Prof_Limited.png
  :width: 400

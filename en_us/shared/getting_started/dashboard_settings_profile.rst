@@ -159,13 +159,9 @@ information.
 * **Education Completed**: The highest level of education that you have
   completed.
 * **Gender**: The gender you identify as.
-<<<<<<< HEAD
 
 * **Year of Birth**: The year that you were born.
 
-=======
-* **Year of Birth**: The year that you were born.
->>>>>>> Incorporate SRP review comments
 * **Preferred Language**: The language that you prefer to communicate in.
 
 To view or change this information, follow these steps.
@@ -177,6 +173,7 @@ To view or change this information, follow these steps.
    (optional)** section, and then make your changes.
 
 EdX saves your changes automatically.
+
 
 ==========================================
 Link or Unlink a Social Media Account
@@ -257,15 +254,10 @@ To create or edit a limited profile, follow these steps.
    100 bytes and 1 MB in size. If you do not add an image, the placeholder
    image appears as your profile image.
 
-<<<<<<< HEAD
    #. Move your cursor over the placeholder image, and then select **Upload
       Image**.
 
    #. In the dialog box, select the image file that you want, and then select
-=======
-   #. Move your cursor over the placeholder image, and then select **Upload Image**.
-   #. In the dialog box, select the image file that you want, and then click
->>>>>>> Incorporate SRP review comments
       **Open**.
 
    To change or remove your profile image, move your cursor over your image,

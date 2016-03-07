@@ -4,28 +4,48 @@
 Retrieving RDX Packages
 ########################
 
-The process for retrieving RDX data packages is similar to
+Data czars retrieve an RDX package for an approved research project from AWS.
+The procedures for downloading RDX data packages and extracting their contents
+is similar to the procedures you follow for your organization's data.
 
-You download files from AWS, and then extract the contents.
+The topics in this section describe the differences between RDX packages and
+organizational data packages.
 
 .. contents::
    :local:
    :depth: 2
 
+For more information about downloading and extracting your organizational data
+packages, see :ref:`Package`.
+
+.. _RDX Package Identifiers:
+
+***************************
+Identifying an RDX Package
+***************************
+
+When researchers propose projects that require RDX data, they request data
+either for specific courses or for courses that meet specified criteria. For
+approved projects, edX assigns an RDX request ID to the set of courses that
+meet these specifications.
+
+Each RDX data package contains both database data and all event files for every
+course in the approved set, and is identified on AWS by the request ID.
+
+
+
+
 .. _Amazon S3 Buckets and Directories for RDX Data:
 
 ********************************************
-Amazon S3 Buckets and Folders for RDX Data
+Locating RDX Data on Amazon S3
 ********************************************
 
-Data package files are located at the following Amazon S3 destinations.
+The data package for an RDX request is located in the Amazon S3
+``s3://edx-course-data/{org}/rdx/{request ID}`` folder. For each course
+in the requested set, this folder contains one ``{course}.tar.gz.gpg`` file.
 
-* The ``s3://edx-course-data/`` folder contains the daily
-  ``{org}-{course?}-prod-events-{date}.log.gz.gpg`` files of course event data.
-
-* The ``s3://course-data`` bucket contains the ``{org}-{course?}-{date}.zip``
-  database snapshot files.
-
+The ``{course}.tar.gz.gpg`` file contains a database file and daily event files for the requested time period in the course's history.
 .. _Download Data Packages from Amazon S3:
 
 *******************************************
@@ -60,7 +80,7 @@ these steps.
 
 
 *********************************************************
-Extract the ``{org}-prod-events-{date}.log.gz.gpg`` File
+Extract the ``{course}.tar.gz.gpg`` File
 *********************************************************
 
 The ``{org}-prod-events-{date}.log.gz.gpg`` file contains all event data for
@@ -75,25 +95,18 @@ project, you complete these tasks.
    file named ``{org}-prod-events-{date}.log``. (Alternatively, the data can
    be decompressed in stream using a tool such as gzip.)
 
-For more information about the events in this file, see :ref:`Tracking Logs`.
 
+When you decrypt the ``{course}.tar.gz.gpg`` file and extract the contents,
 
+::
+  metadata_file.json
+  /events
+    <filename-friendly-course-id>-events-CCYY-MM-dd.log.gz
+    ...
+  /state
+    /<date when state files were originally dumped, as CCYY-MM-dd>
+      <filename-friendly-course-id>-<dump-file-suffix>
+      ...
 
-****************************************
-Extracted the ``{org}-{date}.zip`` File
-****************************************
-
-After you download the ``{org}-{date}.zip`` file for an approved RDX research
-project, you complete these tasks.
-
-#. Extract the contents of the file. When you extract (or unzip) this file, all
-   of the files that it contains are placed in the same directory. All of the
-   extracted files end in ``.gpg``, which indicates that they are encrypted.
-
-#. Use your private key to decrypt the extracted files. See
-   :ref:`Decrypt an Encrypted File`.
-
-The result of extracting and decrypting the ``{org}-{date}.zip`` file is the
-same set of .sql, .csv, and .mongo files that you download for your
-organization. For more information, see :ref:`Data Package Contents`.
+The ``metadata_file.json`` file contains the version of the analytics pipeline that was used to produce the RDX package.
 

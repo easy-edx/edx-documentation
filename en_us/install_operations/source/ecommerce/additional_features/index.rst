@@ -17,10 +17,10 @@ data if one of your usual processors is unavailable.
    track_data
    gate_ecommerce
    maintain_ecommerce
+   create_coupons
 
 
 
 .. Moved globalization.rst to desktop/Works In Progress folder, pending
 .. possible move to ICRV.
 
-.. Moved coupons.rst to desktop/WIP folder.

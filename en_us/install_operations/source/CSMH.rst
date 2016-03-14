@@ -9,27 +9,28 @@ database table that requires a new database configuration and a migration.
 These changes took place for the edx.org and edX Edge sites during the first
 two weeks of March 2016.
 
-All Open edX installations that use the latest software available on the master
-branch of the edx-platform repository, including devstack installations, must
-also complete this migration.
+.. important::  All Open edX installations that use **the latest version**
+  available on the master branch of the edx-platform repository, including
+  devstack installations, must also perform these changes.
 
 .. contents::
    :local:
    :depth: 1
 
-.. note:: This change to the ``courseware_studentmodulehistory`` database
- table will be required during the upgrade to the Open edX Eucalyptus release.
- It is not required or supported for the Dogwood release.
+.. note:: No changes are required or supported at this time for Open edX
+  installations that use the **Dogwood release**. The changes needed for the
+  ``courseware_studentmodulehistory`` table will be required during the upgrade
+  to the Open edX Eucalyptus release.
 
 ****************************
 Why Is a Migration Needed?
 ****************************
 
 The ``courseware_studentmodulehistory`` database table contains a record for
-each attempt learners make to answer ``problem`` type XBlocks correctly. This
-database table is a standard ``StudentModuleHistory`` Django model. It has an
-``id`` column with a type of signed integer, and therefore has a maximum
-capacity of 2,147,483,647 records.
+each attempt that learners make to answer ``problem`` type XBlocks correctly.
+This database table is a standard ``StudentModuleHistory`` Django model. It has
+an ``id`` column with a type of 32-bit signed integer, and therefore has a
+maximum capacity of 2,147,483,647 records.
 
 Typically, ``courseware_studentmodulehistory`` is the largest table in the
 database. On the edx.org site, 20,000 to 80,000 records are written to this
@@ -40,58 +41,57 @@ required to assure that no data is lost for the edx.org site.
 A new database table, ``courseware_studentmodulehistoryextended``, replaces the
 ``courseware_studentmodulehistory`` table. The
 ``courseware_studentmodulehistoryextended`` table uses a custom Django field
-type to add an unsigned integer ``id`` column type, which offers an
-exponentially larger storage capacity.
+type to give the ``id`` column a type of 64-bit unsigned integer, which offers
+an exponentially larger storage capacity.
 
 ********************************
 Database Configuration Strategy
 ********************************
 
-A data migration within a database can take from seconds to days to complete,
-depending on the number of records involved. To prevent data loss while a
-migration takes place, a site can be taken offline. For the edx.org site, both
-data loss and the amount of time needed for a migration to a new table in the
-same database was unacceptable.
+Due to the number of records involved, the edX DevOps team estimated a duration
+of several days for the migration of the edx.org
+``courseware_studentmodulehistory`` table. Downtime of that duration for the
+edx.org site is not acceptable, so the team developed a two-part strategy for
+this procedure.
 
-* To avoid site downtime, you create the
-  ``courseware_studentmodulehistoryextended`` table in a separate database
-  named ``student_module_history``. The software available on the master branch
-  of the edx-platform repository as of 16 March 2016 writes records to this
-  database and table.
+==========================
+Create a Separate Database
+==========================
 
-* To avoid data loss, the system reads the records in both tables, ``courseware_studentmodulehistory`` in the default database and ``courseware_studentmodulehistoryextended`` in the ``student_module_history`` database.
-  .. something about how the script iterates back to make sure new records written since the migration started are also migrated...
+To avoid site downtime, you create the
+``courseware_studentmodulehistoryextended`` table in a separate database
+named ``student_module_history``. The software available on the master branch
+of the edx-platform repository as of 16 March 2016 writes records to this
+database and table.
 
-After the migration is complete, you have the option to leave both tables in place, with the overhead of doing lookups in both. Alternatively, you can configure your system to read only from the new table and truncate the old table.
+To avoid data loss, the system continues to read the records in both tables,
+the original in the default database and the extended table in the
+``student_module_history`` database.
 
+==========================
+Migrate Table Data
+==========================
 
+To migrate the data from the original table to the extended table, you enable a
+feature flag, ``ENABLE_CSMH_EXTENDED``. This change starts a migration script
+that, when complete, iterates back to migrate all of the records written after
+the script started.
 
-***********************
+==========================
 Post-Migration Options
-***********************
+==========================
 
-The following post-migration options   are available.
+After the data migration is complete, you have several options.
 
-* Migrate data from After you create the database and the table,
-This option is suitable for installations that have a large number of records in the ``courseware_studentmodulehistoryextended`` table.
+* You can configure your system to read only from the new
+  ``courseware_studentmodulehistoryextended`` table, and truncate the old
+  table. This option is suitable for installations that have a large number of
+  records in the ``courseware_studentmodulehistoryextended`` table.
 
+* You can leave both tables in place, and allow the system to continue to read
+  from both tables. Due to the overhead of doing lookups in two databases, this
+  option is only suitable for development environments with small databases.
 
-
-
-, ``student_module_history``
-
-``courseware_studentmodulehistory`` table in default database
-
-
-``courseware_studentmodulehistoryextended`` table in student_module_history database with huge primary keys
-
-
-
-
-
-
-====================================
-
-====================================
+.. how to info to come
 
 .. include:: ../../links/links.rst

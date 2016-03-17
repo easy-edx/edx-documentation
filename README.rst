@@ -1,4 +1,12 @@
-###################
+# 文档汉化  --by yunfan team
+
+#如何贡献
+*  fork 当前源码库
+*  切换到yunfan分支
+*  修改，提交，pull requests
+
+
+##################
 EdX Documentation
 ###################
 

@@ -506,7 +506,7 @@ Tracking Logs 中的事件
 
 当学生 ``student_courseenrollment.mode`` 的从 'audit' 或者 'honor' 变成 'verified' 的更新过程完成后，服务器会发出此事件。
 
-**事件来源*: 服务器
+**事件来源**: 服务器
 
 **历史**: 2013.12.18增加
 
@@ -594,114 +594,74 @@ Tracking Logs 中的事件
 .. _video:
 
 ==================================
-Video Interaction Events
+视频交互事件
 ==================================
 
-This section includes descriptions of the following events. Due to a naming
-convention change, many of these events have two identifying names. In this
-list, the original name, which is present in the ``event_type`` field for all
-events, is followed by a newer, revised name. The revised name is present in
-the ``name`` field only for events that have an ``event_source`` of 'mobile'.
+本节包括对以下事件的描述。由于命名约定的变化，这些事件中很多具有两个标识姓名。在这个列表中，目前所有事件的 ``event_type`` 字段都是原来的名称，后面则是一个新的修改后的名称。修订后的名称只出现在 'mobile' 具有 ``event_source`` 事件的 ``name`` 字段。
 
 .. contents::
   :local:
   :depth: 1
 
-A browser or the edX mobile app emits video interaction events when a user
-interacts with a video.
+当用户与视频交互时，browser或edx mobile app发出视频交互事件。
 
-* When users use a browser to stream video files on a desktop computer or
-  mobile device, the browser emits the events.
+* 当用户在台式计算机或移动设备上使用浏览器上的流媒体文件，浏览器发出这些事件。
 
-* When users use the edX mobile app to stream or download course videos for
-  offline viewing, the mobile app emits the events.
+* 当用户通过EDX手机应用程序浏览或下载视频课程供离线观看，应用程序发出这些事件。
 
-  When a user interacts with a downloaded video file offline using the edX
-  mobile app, note that the app can only forward its events during the next
-  connection opportunity. As a result, the date and time in the event's
-  ``time`` field can be different from the date and time in its
-  ``context.received_at`` field. Data packages can include events emitted on
-  past dates.
+  当用户与一个通过EDX移动应用程序下载的视频文件离线交互，要注意应用程序只能在下一次连接机会中发出事件。这样的话，事件的 ``time`` 字段和 ``context.received_at`` 的日期和时间可能不同。数据包可以包括在过去日期发出的事件。
 
-This section presents the video interaction events alphabetically. Typically,
-an interaction with the video player begins with a :ref:`play_video` event.
+本节按字母顺序排列介绍视频交互事件。通常情况下，与视频播放器的交互开始于 :ref:`play_video` 事件。
 
-For courses that include a pre-roll video, user interactions with the pre-roll
-video result in different events. For more information, see :ref:`pre-roll`.
+对于包括片头视频的课程来说，用户在不同的事件中与片头视频的效果相交互。欲了解更多信息，请参阅 :ref:`pre-roll` 。
 
-**Component**: Video
+**组件**: 视频
 
-**History**: The edX mobile app for iOS began to emit a subset of the video
-events on 25 Feb 2015. The edX mobile app for Android began to emit a subset
-of the video events on 23 Dec 2014.
+**历史**: IOS的edx手机应用程序开始发送视频事件的子集开始于2015.2.25。安卓的edx手机应用程序开始发送视频事件的子集开始于2014.12.23。
 
 
 ``hide_transcript``/``edx.video.transcript.hidden``
 ***************************************************
 
-When a user selects **CC** to suppress display of the video transcript, the
-browser or mobile app emits a ``hide_transcript`` event.
+当用户选择 **CC** 压制视频记录显示，浏览器或移动应用程序会发出一个 ``hide_transcript`` 事件。
 
-In addition to the identifying ``event_type`` of ``hide_transcript``, events
-that the edX mobile app emits also include a ``name`` field with a value of
-``edx.video.transcript.hidden``.
+除了识别 ``hide_transcript`` 的 ``event_type`` ，edx移动应用程序还会发出一个具有 ``edx.video.transcript.hidden`` 值的 ``name`` 字段。
 
-**Event Source**: Browser or Mobile
+**事件来源**: Browser 和 Mobile
 
-**History**: Updated 25 Feb 2015 to include events emitted by the edX mobile
-app for iOS. Updated 23 Dec 2014 to include events emitted by the edX mobile
-app for Android.
+**历史**: 2015.2.25更新后可包括edx针对ios移动应用程序发出的事件；2014.12.23更新后包括edx针对Android移动应用程序发出的事件。
 
-``context`` **Member Fields**:
+``context`` **成员字段**:
 
-Only video interaction events with an ``event_source`` of 'mobile' include
-additional ``context`` member fields in addition to the :ref:`common<context>`
-member fields. The same set of additional context fields are added for
-``hide_transcript``/ ``edx.video.transcript.hidden`` events as for the
-:ref:`play_video` events. For an example of an event with these fields, see
-:ref:`Example Mobile App Event`.
+只有 'mobile' 的 ``event_source`` 的视频交互事件在含有常见字段外，还包括额外的 ``context`` 成员字段。同组另外的 ``context`` 成员字段为了 :ref:`play_video` 事件添加了 ``hide_transcript``/ ``edx.video.transcript.hidden`` 事件； 为了了解这些字段中的某一事件的例子，可参看 :ref:`Example Mobile App Event`.
 
-``event`` **Member Fields**:
+``event`` **成员字段**:
 
-The ``hide_transcript``/``edx.video.transcript.hidden`` events include the
-following ``event`` member fields. These fields serve the same purpose for
-events of this type as for the :ref:`play_video` events.
+ ``hide_transcript``/``edx.video.transcript.hidden`` 事件包括了下面的 ``event`` 成员字段. 这些领域为 :ref:`play_video` 这类事件提供了相同的目的，
 
 * ``code``
-* ``currentTime``: The point in the video file at which the transcript was
-  hidden.
+* ``currentTime``: 在视频文件中的记录被隐藏的点。
 * ``id``
 
 ``load_video``/``edx.video.loaded``
 ***********************************
 
-When the video is fully rendered and ready to play, the browser or mobile app
-emits a ``load_video`` event.
+当视频完全渲染后准备播放，浏览器或移动应用程序发出一个 ``load_video`` 事件。
 
-In addition to the identifying ``event_type`` of ``load_video``, the events
-that the edX mobile app emits also include a ``name`` field with a value of
-``edx.video.loaded``.
+除了识别 ``load_video`` 的 ``event_type`` ，edx移动应用程序还会发出一个具有 ``edx.video.loaded`` 值的 ``name`` 字段。
 
-**Event Source**: Browser or Mobile
 
-**History**: Updated 25 Feb 2015 to include events emitted by the edX mobile
-app for iOS. Updated 23 Dec 2014 to include events emitted by the edX mobile
-app for Android.
+**事件来源**: Browser 和 Mobile
 
-``context`` **Member Fields**:
+**历史**: 2015.2.25更新后可包括edx针对ios移动应用程序发出的事件；2014.12.23更新后包括edx针对Android移动应用程序发出的事件。
 
-Only video interaction events with an ``event_source`` of 'mobile' include
-additional ``context`` member fields in addition to the :ref:`common<context>`
-member fields. The same set of additional context fields are added for
-``load_video`` events as for :ref:`play_video`. For an example of an event
-with these fields, see
-:ref:`Example Mobile App Event`.
+``context`` **成员字段**:
 
-``event`` **Member Fields**:
+只有有 'mobile' 的``event_source`` 的视频交互事件在含有常见成员字段外，还包括额外的 ``context`` 成员字段。同组另外的 :ref:`common<context>` 成员字段为了 :ref:`play_video` 事件添加了 ``load_video`` 事件；为了解这些字段中的某一事件的例子，可参看 :ref:`Example Mobile App Event` 。
 
-The ``load_video``/ ``edx.video.loaded`` events include the following ``event``
-member fields. These fields serve the same purpose for events of this type as
-for the :ref:`play_video` events.
+``event`` **成员字段**:
+
+ ``load_video``/ ``edx.video.loaded`` 事件包括了下面的event成员字段。这些字段均为 :ref:`play_video` 等这一类的事件服务于相同的目的。
 
 * ``code``
 * ``id``
@@ -709,54 +669,38 @@ for the :ref:`play_video` events.
 ``pause_video``/``edx.video.paused``
 *************************************
 
-When a user selects the video player's **pause** control, the player emits a
-``pause_video`` event. For videos that are streamed in a browser, when the
-player reaches the end of the video file and play automatically stops it emits
-both this event and a ``stop_video`` event (as of June 2014).
+当用户选择视频播放器的 **暂停** 键，播放器发出 ``pause_video`` 事件。对于那些在浏览器中的流媒体文件，当用户看完视频文件自动停止播放后，它发出 ``pause_video`` 事件和 ``stop_video`` 事件（如2014年6月）。
 
-Note that course teams can specify a **Video Stop Time** for video files.
+需要注意的是课程团队可以为视频文件指定一个 **视频停止时间** 。
 
-* If the user streams a video file in a browser and a **Video Stop Time** is
-  present for the video, the player stops at the specified time and emits the
-  ``pause_video`` and ``stop_video`` events.
+* 如果用户在浏览器上浏览视频文件，视频中有一个视频停止时间，那么用户将在指定的时间停止，并发出 ``pause_video`` 和 ``stop_video`` 事件。
 
-* If the user plays a streaming or downloaded video in the edX mobile app, the
-  app ignores the **Video Stop Time** and plays the file to its end. The app
-  then emits only the ``stop_video`` event.
+* 如果用户通过EDX移动应用程序来观看或下载视频，那么应用程序将忽略 **视频停止时间** 并播放至结束。该应用程序只发出 ``stop_video`` 事件。
 
-For more information, see :ref:`partnercoursestaff:Working with Video
-Components` in the *Building and Running an edX Course* guide.
+欲了解更多信息，可参看 **Building and Running an edX Course** 指导中的 :ref:`partnercoursestaff:Working with Video
+Components` 。
 
-In addition to the identifying ``event_type`` of ``pause_video``, the events
-that the edX mobile app emits include a ``name`` field with a value of
-``edx.video.paused``.
+除了识别 ``pause_video`` 的 ``event_type``, EDX移动应用程序发出的事件还包括一个有着 ``edx.video.paused`` 值的 ``name`` 字段。
 
-**Event Source**: Browser or Mobile
+**事件来源**: Browser or Mobile
 
-**History**:
+**历史**:
 
-* Updated 5 May 2015 to include the effect of a **Video Stop Time**.
-* Updated 25 Feb 2015 to include events emitted by the edX mobile app for iOS.
-* Updated 23 Dec 2014 to include events emitted by the edX mobile app for
-  Android.
+* 2015.5.5更新包括了 **视频停止** 事件的效果；
+* 2015.2.25更新包括edx针对ios移动应用程序发出的事件；
+* 2014.12.23更新包括edx针对Android移动应用程序发出的事件。
 
-``context`` **Member Fields**:
+``context`` **成员字段**:
 
-Only video interaction events with an ``event_source`` of 'mobile' include
-additional ``context`` member fields in addition to the :ref:`common<context>`
-member fields. The same set of additional context fields are added for
-``pause_video``/ ``edx.video.paused`` events as for
-:ref:`play_video`. For an example of an event with these fields, see
-:ref:`Example Mobile App Event`.
+只有 'mobile' ``event_source``的视频交互事件在含有常见成员字段外，还包括额外的 ``context`` 成员字段。同组另外的 :ref:`common<context>` 成员字段为了 ``pause_video``/ ``edx.video.paused`` 事件添加了 :ref:`play_video` 。事件；为了解这些字段中的某一事件的例子，可参看 :ref:`Example Mobile App Event` 。
 
-``event`` **Member Fields**:
+``event`` **成员字段**:
 
-The ``pause_video``/``edx.video.paused`` events include the following
-``event`` member fields. These fields serve the same purpose for events of
-this type as for the :ref:`play_video` events.
+ ``pause_video``/``edx.video.paused`` 事件包括了下面的
+``event`` 成员字段。 这些字段均为 :ref:`play_video` 等这一类的事件服务于相同的目的。
 
 * ``code``
-* ``currentTime``: The time in the video at which the video paused.
+* ``currentTime``:视频暂停的时刻
 * ``id``
 
 .. _play_video:
@@ -764,80 +708,58 @@ this type as for the :ref:`play_video` events.
 ``play_video``/``edx.video.played``
 ***********************************
 
-When a user selects the video player's **play** control, the player emits a
-``play_video`` event.
+当用户选择视频播放器的 **播放** 键，播放器发出 ``play_video`` 事件。
 
-Note that course teams can specify a **Video Start Time** for video files.
+需要注意的是课程团队可以为视频文件指定一个 **视频开始时间** 。
 
-* If the user streams a video file in a browser and a **Video Start Time** is
-  present for the video, the player starts at the specified time and emits the
-  ``play_video`` event.
+* 如果用户在浏览器上观看视频文件，视频中有一个 **视频开始时间** ，那么用户将在指定的时间开始，并发出 ``play_video`` 事件。
 
-* If the user plays a streaming or downloaded video in the edX mobile app, the
-  app ignores the **Video Start Time** and emits the ``play_video`` event
-  when it plays the file from the beginning.
+* 如果用户通过EDX移动应用程序来观看或下载视频，那么应用程序将忽略 **视频开始时间** 并且当它从头播放文件时发出 ``play_video`` 事件。
 
-For more information, see :ref:`partnercoursestaff:Working with Video
-Components` in the *Building and Running an edX Course* guide.
+了解更多信息, 可参看 *Building and Running an edX Course* 指导中的 :ref:`partnercoursestaff:Working with Video
+Components` 。
 
-In addition to the identifying ``event_type`` of ``play_video``, events
-that the edX mobile app emits also include a ``name`` field with a value of
-``edx.video.played``.
+除了识别 ``play_video`` 的 ``event_type`` ， EDX移动应用程序发出的事件还包括一个有着 ``edx.video.played`` 值的 ``name`` 字段。
 
-**Event Source**: Browser or Mobile
+**事件来源**: Browser 和 Mobile
 
-**History**:
+**历史**:
 
-* Updated 5 May 2015 to include the effect of a **Video Start Time**.
-* Updated 25 Feb 2015 to include events emitted by the edX mobile app for iOS.
-* Updated 23 Dec 2014 to include events emitted by the edX mobile app for
-  Android.
+* 2015.5.5更新包括了 **视频开始** 事件的效果；
+* 2015.2.25更新包括edx针对ios移动应用程序发出的事件；
+* 2014.12.23更新包括edx针对Android移动应用程序发出的事件。
 
-``context`` **Member Fields**:
+``context`` **成员字段**:
 
-Only video interaction events with an ``event_source`` of 'mobile' include
-additional ``context`` member fields in addition to the :ref:`common<context>`
-member fields. Other video interaction events with an ``event_source`` of
-mobile also include these fields. For an example of an event with these
-fields, see :ref:`Example Mobile App Event`.
+只有有 `mobile` 的 ``event_source`` 的视频交互事件在含有常见成员字段外，还包括额外的 :ref:`common<context>` 成员字段。其他有着移动 ``event_source`` 的视频交互事件也包括这些字段。为了解这些字段中的某一事件的例子，可参看 :ref:`Example Mobile App Event` 。
 
 .. list-table::
    :widths: 15 15 60
    :header-rows: 1
 
-   * - Field
-     - Type
-     - Details and Member Fields
+   * - 字段
+     - 类型
+     - 细节和成员字段
    * - ``application``
      - object
-     - Includes ``name`` and ``version`` member fields to identify the edX
-       mobile app.
+     - 包括 ``name`` 和 ``version`` 成员字段以标识EDX移动应用程序
    * - ``client``
      - object
-     - Includes member objects and fields with device-specific data.
+     - 包括有特定设备数据的成员对象和字段。``client``        
+       数据依赖由第三方提供的事件集库收集。
 
-       The ``client`` data is gathered by the event collection library, which
-       is provided by a third party.
-
-       The content of this field is subject to change without notice.
+       此字段的内容如有更改，恕不另行通知。
 
    * - ``component``
      - string
      - 'videoplayer'
    * - ``received_at``
      - number
-     - Indicates the time at which the event collection library received the
-       event.
+     - 表示该事件集库接收到事件的时间。
+       当移动设备被连接到互联网时，事件只能被转发。因此，这个值可以与该事件的 ``time`` 值不同。
+       在这个字段中的数据反映了第三方集成并随时变更，恕不通知。
 
-       Events can only be forwarded when the mobile device is connected to the
-       Internet. Therefore, this value can be different than the event's
-       ``time`` value.
-
-       The data in this field reflects a third-party integration and is subject
-       to change at any time without notice.
-
-
-``event`` **Member Fields**:
+``event`` **成员字段**:
 
 .. list-table::
    :widths: 15 15 60
@@ -848,34 +770,28 @@ fields, see :ref:`Example Mobile App Event`.
      - Details
    * - ``code``
      - string
-     - For YouTube videos played in a browser, the ID of the video being
-       loaded (for example, OEyXaRPEzfM).
+     - 对于在浏览器中播放YouTube视频，将加载视频的ID（例如，OEyXaRPEzfM）。
+       对于在浏览器播放非YouTube视频，为“HTML5”。
+       对于EDX移动应用程序播放的视频，为“移动”。
 
-       For non-YouTube videos played in a browser, 'html5'.
-
-       For videos played by the edX mobile app, 'mobile'.
 
    * - ``currentTime``
      - number
-     - The time in the video at which the event was emitted.
+     - 事件发出时视频中的时刻。
    * - ``id``
      - string
-     - The optional name value supplied by the course creators, or the system-
-       generated hash code for the video being watched.
+     - 为视频被观看，由课程创作者或者视频系统生成的hash码提供的可选名称值。
+       例如， ``0b9e39477cf34507a7a48f74be381fdd``。
 
-       For example, ``0b9e39477cf34507a7a48f74be381fdd``.
-
-       This value is part of the ``courseware_studentmodule.module_id``. See
+       该值是 ``courseware_studentmodule.module_id``. 的一部分。请参见
        :ref:`courseware_studentmodule`.
 
-       **History**: In October 2014, identifiers for some new courses began to
-       use the format shown above. Other new courses, and all courses created
-       prior to October 2014, use an HTML-escaped version of the
-       ``courseware_studentmodule.module_id``. For example,
+       **历史**: 2014.10，一些新的课程标识符开始使用上面显示的格式。其他新的课程，和2014年10月之前创建的所有课程，使用
+       ``courseware_studentmodule.module_id`` 的HTML转义版本。例如
        ``i4x-HarvardX-PH207x-video-Simple_Random_Sample``.
 
 
-Example: Browser-Emitted ``play_video`` Event
+案例：一个browser发出的 ``play_video`` 事件
 **********************************************
 
 .. code-block:: json
@@ -903,7 +819,7 @@ Example: Browser-Emitted ``play_video`` Event
 
 .. _Example Mobile App Event:
 
-Example: Mobile App-Emitted ``edx.video.played`` Event
+案例：移动应用程序发出的 ``edx.video.played`` 事件
 *******************************************************
 
 .. code-block:: json
@@ -980,82 +896,57 @@ Example: Mobile App-Emitted ``edx.video.played`` Event
 ``seek_video``/``edx.video.position.changed``
 *********************************************
 
-A browser emits ``seek_video`` events when a user selects a user interface
-control to go to a different point in the video file.
+当用户选择一个用户接口控制去文件的其他位置，播放器发出 ``seek_video`` 事件。
+在台式计算机上，用户可以在播放栏点击和拖动或点击记录来改变位置。
 
-* On a desktop computer, users can click and drag in the playback bar or click
-  in a transcript to change position.
-* In the edX mobile app, users can click and drag in the playback bar or tap
-  the "back 30 seconds" button to change position.
-* When using a browser on a mobile device, users can click and drag in the
-  playback bar to change position.
+在EDX移动应用程序中，用户可以在播放栏中单击并拖动或点击“后退30秒。”按钮来改变位置。
 
-In addition to the value ``seek_video`` in the ``event_type`` field, the
-events that the edX mobile app emits include the value
-``edx.video.position.changed`` in the ``name`` field.
+使用移动设备上的浏览器时，用户可以在播放栏上点击和拖动来改变位置。
 
-**Event Source**: Browser or Mobile
+除了 ``event_type`` 中的值 ``seek_video`` ，EDX移动应用程序发出的事件还包括一个有着 ``edx.video.position.changed`` 值的 ``name`` 字段。
 
-**History**:
+**事件来源**: Browser 和 Mobile
 
-* Updated 10 Mar 2015 to include the final implementation for events emitted
-  by the edX mobile app for Android and iOS. Prototype events were emitted by
-  the mobile app in February and March 2015.
+**历史**:
 
-* Prior to 25 Jun 2014, the ``old_time`` and ``new_time`` fields were set to
-  the same value.
+* 2015.3.10更新包括了edx针对ios和Android移动应用程序发出事件的最终成果；原型事件是在2015年2月和3月由移动应用程序发出的
 
-``context`` **Member Fields**:
+* 在2014.6.25之前 ``old_time`` 和 ``new_time`` 字段被设置为相同的值。
 
-Only video interaction events with an ``event_source`` of 'mobile' include
-additional ``context`` member fields in addition to the :ref:`common<context>`
-member fields. The same set of additional context fields are added for
-``seek_video``/ ``edx.video.position.changed`` events as for
-:ref:`play_video`. For an example of an event with these fields, see
-:ref:`Example Mobile App Event`.
+``context`` **成员字段**:
 
-``event`` **Member Fields**:
+只有有 `mobile` 的 ``event_source`` 的视频交互事件在含有常见成员字段外，还包括额外的 ``context`` 成员字段。同组另外的 :ref:`common<context>` 成员字段为了 ``seek_video``/ ``edx.video.position.changed`` 事件添加了 :ref:`play_video` 事件；为了解这些字段中的某一事件的例子，可参看 :ref:`Example Mobile App Event`.
 
-The ``seek_video``/``edx.video.position.changed`` events include the following
-``event`` member fields. These fields serve the same purpose for events of
-this type as for the :ref:`play_video` events.
+``event`` **成员事件**:
+
+The ``seek_video``/``edx.video.position.changed`` 包括了下面的 ``event`` 成员字段。 这些字段均为 :ref:`play_video` 等这一类的事件服务于相同的目的。
 
 * ``code``
 * ``id``
 
-The following additional ``event`` member fields apply specifically to
-``seek_video``/``edx.video.position.changed`` events.
+以下额外的 ``event`` 成员字段专门用于 ``seek_video``/``edx.video.position.changed`` 事件。
 
 .. list-table::
    :widths: 15 15 60
    :header-rows: 1
 
-   * - Field
-     - Type
-     - Details
+   * - 字段
+     - 类型
+     - 细节
    * - ``new_time``
      - number
-     - The time in the video, in seconds, that the user selected as the
-       destination point.
+     - 用户在视频中选择目标点的时间，以秒为单位。
    * - ``old_time``
      - number
-     - The time in the video, in seconds, at which the user chose to go to a
-       different point in the file.
+     - T用户在视频中选择其他点的时间，以秒为单位。
    * - ``requested_skip_interval``
      - number
-     - Applies only to events with an  ``event_source`` of 'mobile'. The number
-       of seconds that the user moved backward (expressed as a negative) or
-       forward in the file.
-
-       **History**: Added 10 Mar 2015.
+     - 仅适用于具有 `mobile` 的``event_source``的事件。用户在视频中向前或向后（表示为负）移动的秒数。
+     - 历史：2015年3月10日增加。
 
    * - ``type``
      - string
-     - The navigational method used to change position within the video.
-
-       In events for a user of a desktop computer, this value can be
-       'onCaptionSeek' or 'onSlideSeek'. In events for a user of the mobile
-       app, this value can be 'onSlideSeek' or 'onSkipSeek'.
+     - 在视频内改变位置所使用的导航方法，用户使用台式计算机的事件中，该值可以是 ``onCaptionSeek`` 或 ``onSlideSeek`` 。用户使用移动应用的事件中，这个值可以是 ``onSlideSeek`` 或 ``onSkipSeek`` 。
 
 
 ``show_transcript``/``edx.video.transcript.shown``

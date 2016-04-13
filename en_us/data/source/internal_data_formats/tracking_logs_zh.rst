@@ -506,7 +506,7 @@ Tracking Logs 中的事件
 
 当学生 ``student_courseenrollment.mode`` 的从 'audit' 或者 'honor' 变成 'verified' 的更新过程完成后，服务器会发出此事件。
 
-**事件来源*: 服务器
+**事件来源**: 服务器
 
 **历史**: 2013.12.18增加
 
